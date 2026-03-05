@@ -93,7 +93,7 @@ If you want to use Firebase for additional features:
 2. Add the environment variables in the Vercel dashboard:
    - Go to your project settings
    - Navigate to "Environment Variables"
-   - Add each variable listed above
+   - Add each variable listed above with their actual values
 3. Deploy automatically or trigger a new deployment
 
 ### GitHub Pages Deployment

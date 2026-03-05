@@ -1,0 +1,20 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": null,
+  "env": {
+    "VITE_SUPABASE_PROJECT_ID": "@supabase_project_id",
+    "VITE_SUPABASE_ANON_KEY": "@supabase_anon_key",
+    "VITE_SUPABASE_URL": "@supabase_url",
+    "VITE_GOOGLE_MAPS_API_KEY": "@google_maps_api_key",
+    "VITE_GOOGLE_MAPS_MAP_ID": "@google_maps_map_id",
+    "VITE_FIREBASE_API_KEY": "@firebase_api_key",
+    "VITE_FIREBASE_AUTH_DOMAIN": "@firebase_auth_domain",
+    "VITE_FIREBASE_PROJECT_ID": "@firebase_project_id",
+    "VITE_FIREBASE_STORAGE_BUCKET": "@firebase_storage_bucket",
+    "VITE_FIREBASE_MESSAGING_SENDER_ID": "@firebase_messaging_sender_id",
+    "VITE_FIREBASE_APP_ID": "@firebase_app_id"
+  }
+}

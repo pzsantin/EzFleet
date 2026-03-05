@@ -38,10 +38,6 @@ if (isFirebaseConfigured) {
   auth = null as any;
   db = null as any;
 }
-  // Create dummy objects to prevent crashes
-  auth = null as any;
-  db = null as any;
-}
 
 export { auth, db };
 export default app;
