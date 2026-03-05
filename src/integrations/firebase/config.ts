@@ -14,7 +14,7 @@ const firebaseConfig = {
 
 // Check if all required Firebase config values are present
 const isFirebaseConfigured = Object.values(firebaseConfig).every(value =>
-  value && value !== '' && !value.includes('your_')
+  value && value !== '' && value !== undefined && value !== null
 );
 
 // Initialize Firebase only if properly configured
@@ -23,11 +23,21 @@ let auth;
 let db;
 
 if (isFirebaseConfigured) {
-  app = initializeApp(firebaseConfig);
-  auth = getAuth(app);
-  db = getFirestore(app);
+  try {
+    app = initializeApp(firebaseConfig);
+    auth = getAuth(app);
+    db = getFirestore(app);
+    console.log('✅ Firebase inicializado com sucesso');
+  } catch (error) {
+    console.error('❌ Erro ao inicializar Firebase:', error);
+    auth = null as any;
+    db = null as any;
+  }
 } else {
-  console.warn('⚠️ Firebase não configurado. Verifique as variáveis de ambiente VITE_FIREBASE_*');
+  console.warn('⚠️ Firebase não configurado. Verifique as variáveis de ambiente VITE_FIREBASE_* no arquivo .env.local');
+  auth = null as any;
+  db = null as any;
+}
   // Create dummy objects to prevent crashes
   auth = null as any;
   db = null as any;

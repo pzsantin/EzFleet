@@ -16,8 +16,18 @@ const AuthPage = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  // Check if Firebase is configured
+  const isFirebaseAvailable = !!auth;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!isFirebaseAvailable) {
+      toast.error('Firebase não está configurado. Verifique as variáveis de ambiente.');
+      console.error('❌ Firebase não está disponível para autenticação');
+      return;
+    }
+
     setLoading(true);
 
     try {
