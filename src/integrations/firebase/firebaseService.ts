@@ -13,12 +13,21 @@ import {
 import { db } from './config';
 import { Vehicle, Mission } from '@/types/fleet';
 
+// Helper function to check if Firebase is configured
+const isFirebaseAvailable = () => {
+  return !!db;
+};
+
 // ============= VEÍCULOS =============
 
 /**
  * Adiciona um novo veículo ao Firestore
  */
 export const addVehicle = async (userId: string, vehicle: Omit<Vehicle, 'id'>) => {
+  if (!isFirebaseAvailable()) {
+    throw new Error('Firebase não está configurado');
+  }
+
   try {
     const docRef = await addDoc(collection(db, 'users', userId, 'vehicles'), {
       ...vehicle,
@@ -36,6 +45,11 @@ export const addVehicle = async (userId: string, vehicle: Omit<Vehicle, 'id'>) =
  * Busca todos os veículos do usuário
  */
 export const getVehicles = async (userId: string): Promise<Vehicle[]> => {
+  if (!isFirebaseAvailable()) {
+    console.warn('Firebase não está configurado - retornando array vazio para veículos');
+    return [];
+  }
+
   try {
     const q = query(collection(db, 'users', userId, 'vehicles'));
     const querySnapshot = await getDocs(q);
@@ -57,6 +71,10 @@ export const getVehicles = async (userId: string): Promise<Vehicle[]> => {
  * Atualiza um veículo existente
  */
 export const updateVehicle = async (userId: string, vehicleId: string, updates: Partial<Vehicle>) => {
+  if (!isFirebaseAvailable()) {
+    throw new Error('Firebase não está configurado');
+  }
+
   try {
     const vehicleRef = doc(db, 'users', userId, 'vehicles', vehicleId);
     await updateDoc(vehicleRef, {
@@ -73,6 +91,10 @@ export const updateVehicle = async (userId: string, vehicleId: string, updates: 
  * Deleta um veículo
  */
 export const deleteVehicle = async (userId: string, vehicleId: string) => {
+  if (!isFirebaseAvailable()) {
+    throw new Error('Firebase não está configurado');
+  }
+
   try {
     await deleteDoc(doc(db, 'users', userId, 'vehicles', vehicleId));
   } catch (error) {
@@ -87,6 +109,10 @@ export const deleteVehicle = async (userId: string, vehicleId: string) => {
  * Adiciona uma nova missão ao Firestore
  */
 export const addMission = async (userId: string, mission: Omit<Mission, 'id'>) => {
+  if (!isFirebaseAvailable()) {
+    throw new Error('Firebase não está configurado');
+  }
+
   try {
     const docRef = await addDoc(collection(db, 'users', userId, 'missions'), {
       ...mission,
@@ -104,6 +130,11 @@ export const addMission = async (userId: string, mission: Omit<Mission, 'id'>) =
  * Busca todas as missões do usuário
  */
 export const getMissions = async (userId: string): Promise<Mission[]> => {
+  if (!isFirebaseAvailable()) {
+    console.warn('Firebase não está configurado - retornando array vazio para missões');
+    return [];
+  }
+
   try {
     const q = query(collection(db, 'users', userId, 'missions'));
     const querySnapshot = await getDocsFunction(q);
@@ -125,6 +156,11 @@ export const getMissions = async (userId: string): Promise<Mission[]> => {
  * Busca missões de um veículo específico
  */
 export const getMissionsByVehicle = async (userId: string, vehicleId: string): Promise<Mission[]> => {
+  if (!isFirebaseAvailable()) {
+    console.warn('Firebase não está configurado - retornando array vazio para missões do veículo');
+    return [];
+  }
+
   try {
     const q = query(
       collection(db, 'users', userId, 'missions'),
@@ -149,6 +185,10 @@ export const getMissionsByVehicle = async (userId: string, vehicleId: string): P
  * Atualiza uma missão existente
  */
 export const updateMission = async (userId: string, missionId: string, updates: Partial<Mission>) => {
+  if (!isFirebaseAvailable()) {
+    throw new Error('Firebase não está configurado');
+  }
+
   try {
     const missionRef = doc(db, 'users', userId, 'missions', missionId);
     await updateDoc(missionRef, {
@@ -165,6 +205,10 @@ export const updateMission = async (userId: string, missionId: string, updates: 
  * Deleta uma missão
  */
 export const deleteMission = async (userId: string, missionId: string) => {
+  if (!isFirebaseAvailable()) {
+    throw new Error('Firebase não está configurado');
+  }
+
   try {
     await deleteDoc(doc(db, 'users', userId, 'missions', missionId));
   } catch (error) {

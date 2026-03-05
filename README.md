@@ -66,7 +66,60 @@ npm run build
 npm run preview
 ```
 
+## Deployment
+
+### Environment Variables
+
+Before deploying, make sure to configure the following environment variables:
+
+#### Required Variables
+- `VITE_SUPABASE_URL` - Your Supabase project URL
+- `VITE_SUPABASE_ANON_KEY` - Your Supabase anonymous key
+- `VITE_GOOGLE_MAPS_API_KEY` - Your Google Maps API key
+- `VITE_GOOGLE_MAPS_MAP_ID` - Your Google Maps Map ID
+
+#### Optional Variables (Firebase)
+If you want to use Firebase for additional features:
+- `VITE_FIREBASE_API_KEY` - Your Firebase API key
+- `VITE_FIREBASE_AUTH_DOMAIN` - Your Firebase auth domain
+- `VITE_FIREBASE_PROJECT_ID` - Your Firebase project ID
+- `VITE_FIREBASE_STORAGE_BUCKET` - Your Firebase storage bucket
+- `VITE_FIREBASE_MESSAGING_SENDER_ID` - Your Firebase messaging sender ID
+- `VITE_FIREBASE_APP_ID` - Your Firebase app ID
+
+### Vercel Deployment
+
+1. Connect your GitHub repository to Vercel
+2. Add the environment variables in the Vercel dashboard:
+   - Go to your project settings
+   - Navigate to "Environment Variables"
+   - Add each variable listed above
+3. Deploy automatically or trigger a new deployment
+
+### GitHub Pages Deployment
+
+1. Make sure you have a `gh-pages` branch or use GitHub Actions
+2. Add the environment variables as repository secrets:
+   - Go to your repository settings
+   - Navigate to "Secrets and variables" > "Actions"
+   - Add each variable as a repository secret
+3. Use a GitHub Action workflow for deployment
+
+**Important**: If Firebase variables are not configured, the app will still work but Firebase features will be disabled. The app will show a warning in the console but won't crash.
+
 ## Testing
+
+```sh
+# Run tests
+bun test
+# or
+npm test
+
+# Run tests in watch mode
+bun test:watch
+# or
+npm run test:watch
+```
 
 ```sh
 # Run tests
