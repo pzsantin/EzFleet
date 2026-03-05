@@ -16,7 +16,7 @@ This project is built with:
 - **shadcn/ui** - High-quality, accessible UI components
 - **Tailwind CSS** - Utility-first CSS framework
 - **React Router** - Client-side routing
-- **Supabase** - Authentication and database
+- **Firebase** - Authentication and Firestore database
 - **React Query** - Server state management
 - **Leaflet & React Leaflet** - Interactive maps
 - **Recharts** - Data visualization
@@ -73,10 +73,9 @@ npm run preview
 Before deploying, make sure to configure the following environment variables:
 
 #### Required Variables
-- `VITE_SUPABASE_URL` - Your Supabase project URL
-- `VITE_SUPABASE_ANON_KEY` - Your Supabase anonymous key
 - `VITE_GOOGLE_MAPS_API_KEY` - Your Google Maps API key
 - `VITE_GOOGLE_MAPS_MAP_ID` - Your Google Maps Map ID
+- Firebase variables are optional (see below)
 
 #### Optional Variables (Firebase)
 If you want to use Firebase for additional features:

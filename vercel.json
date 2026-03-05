@@ -5,9 +5,6 @@
   "installCommand": "npm install",
   "framework": null,
   "env": {
-    "VITE_SUPABASE_PROJECT_ID": "@supabase_project_id",
-    "VITE_SUPABASE_ANON_KEY": "@supabase_anon_key",
-    "VITE_SUPABASE_URL": "@supabase_url",
     "VITE_GOOGLE_MAPS_API_KEY": "@google_maps_api_key",
     "VITE_GOOGLE_MAPS_MAP_ID": "@google_maps_map_id",
     "VITE_FIREBASE_API_KEY": "@firebase_api_key",
